@@ -1,0 +1,22 @@
+.bs_btn{
+    display: flex;
+    justify-content: center;
+}
+.BuyButton{
+    margin-right: 10px;
+}
+.SellButton{
+    margin-left: 10px;
+}
+
+.quanthead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amounthead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
