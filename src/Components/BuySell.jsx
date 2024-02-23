@@ -26,7 +26,7 @@ function PriceChange({ val }) {
           {val}
         </span>
         <img
-          style={{ position: "absolute", right: "70px", top: "40px", height:"40px"}}
+          style={{ position: "absolute", right: "100px", top: "50px", height:"40px"}}
           src="src/assets/icons8-down-arrow-64.png"
         />
       </>
@@ -38,7 +38,7 @@ function PriceChange({ val }) {
           {val}
         </span>
         <img
-          style={{  position: "absolute", right: "70px", top: "40px", height:"40px" }}
+          style={{  position: "absolute", right: "90px", top: "40px", height:"40px" }}
           src="src/assets/icons8-up-30.png"
         />
       </>
@@ -54,7 +54,7 @@ function InvestedCard({ Value }) {
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
         {Cookies.get("invested")}{" "}
         <PriceChange
-          val={Value < 0 ? 0 : Value - parseFloat(Cookies.get("invested"))}
+          val={Value < 0 ? 0 : parseFloat(Value - parseFloat(Cookies.get("invested"))).toFixed(2)}
         />
       </Card.Body>
     </Card>

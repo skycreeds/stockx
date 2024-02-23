@@ -32,6 +32,7 @@ function App() {
         <TradingViewWidget />
       </div>
       <div>
+        {stockData['close']}
         <BuySellWidget stockdata={stockData["close"]} />
       </div>
     </>
