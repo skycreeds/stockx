@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form, InputGroup, Card, Container, Row, Col } from "react-bootstrap";
 import BuyButton, { SellButton } from "./Buttons";
 
-
 import "./Style.css";
+import Cookies from "js-cookie";
 
 //const [cookies,setcookies,removeCookie]=useCookies(['Asset'])
 
@@ -13,7 +13,7 @@ function AssetCard({ Value }) {
       <Card.Body>
         <Card.Title>ASSETS</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        <Card.Text>{Value}</Card.Text>
+        <Card.Text>{Cookies.get("Asset")}</Card.Text>
       </Card.Body>
     </Card>
   );
@@ -26,7 +26,7 @@ function PriceChange({ val }) {
           {val}
         </span>
         <img
-          style={{ position: "absolute", right: "60px", top: "40px" }}
+          style={{ position: "absolute", right: "70px", top: "40px", height:"40px"}}
           src="src/assets/icons8-down-arrow-64.png"
         />
       </>
@@ -38,7 +38,7 @@ function PriceChange({ val }) {
           {val}
         </span>
         <img
-          style={{ position: "absolute", right: "80px" }}
+          style={{  position: "absolute", right: "70px", top: "40px", height:"40px" }}
           src="src/assets/icons8-up-30.png"
         />
       </>
@@ -52,18 +52,21 @@ function InvestedCard({ Value }) {
       <Card.Body>
         <Card.Title>INVESTED</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        {Value[0]} <PriceChange val={Value[1] < 0 ? 0 : Value[1] - Value[0]} />
+        {Cookies.get("invested")}{" "}
+        <PriceChange
+          val={Value < 0 ? 0 : Value - parseFloat(Cookies.get("invested"))}
+        />
       </Card.Body>
     </Card>
   );
 }
-function StockList({ Value }) {
+function StockList() {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Body>
         <Card.Title>Stock List</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        <Card.Text>{Value}</Card.Text>
+        <Card.Text>{Cookies.get("Gquant")}</Card.Text>
       </Card.Body>
     </Card>
   );
@@ -73,12 +76,13 @@ function BuySellWidget({ stockdata }) {
   //console.log(stockdata)
   // const [stockData, setStockData] = useState([]);
   //const [Stockhold,setStockhold] = useState(0);
-  const [Invested, setInvested] = useState(0);
-  const [Asset, setAsset] = useState(100000);
-  const [quat, setQuant] = useState(0);
-  const [amount, setAmount] = useState(0);
-  const [Gquant, setGquant] = useState(0);
-  
+  // const [Invested, setInvested] = useState(0);
+  // const [Asset, setAsset] = useState(100000);
+  // const [quat, setQuant] = useState(0);
+  // const [amount, setAmount] = useState(0);
+  // const [Gquant, setGquant] = useState(0);
+  //const quant=Cookies.get('quant')
+  //const amount=Cookies.get('amount')
   //setcookies('Asset',Asset,{path:'/'})
 
   //const [change,setChange] =useState(0)
@@ -99,21 +103,21 @@ function BuySellWidget({ stockdata }) {
             <Form.Control
               aria-label="With textarea"
               placeholder="Quantity"
-              value={isNaN(quat) ? 0 : quat}
+              value={isNaN(Cookies.get("quant")) ? 0 : Cookies.get("quant")}
               onChange={(event) => {
                 let tempq = event.target.value;
-                setQuant(parseFloat(tempq));
-                setAmount(parseFloat(tempq * stockdata));
+                Cookies.set("quant", parseFloat(tempq));
+                Cookies.set("amount", parseFloat(tempq * stockdata));
               }}
             />
             <Form.Control
               aria-label="With textarea"
               placeholder="Amount"
-              value={isNaN(amount) ? 0 : amount}
+              value={isNaN(Cookies.get("amount")) ? 0 : Cookies.get("amount")}
               onChange={(event) => {
                 let tempq = event.target.value;
-                setAmount(parseFloat(tempq));
-                setQuant(parseFloat(tempq / stockdata));
+                Cookies.set("amount", parseFloat(tempq));
+                Cookies.set("quant", parseFloat(tempq / stockdata));
               }}
             />
           </InputGroup>
@@ -123,49 +127,25 @@ function BuySellWidget({ stockdata }) {
       <Row>
         <Col className="bs_btn">
           <div className="BuyButton">
-            <BuyButton
-              VAll={[
-                Asset,
-                setAsset,
-                Invested,
-                setInvested,
-                stockdata,
-                quat,
-                amount,
-                setGquant,
-                Gquant,
-              ]}
-            />
+            <BuyButton VAll={stockdata} />
           </div>
           <div className="SellButton">
-            <SellButton
-              VAll={[
-                Asset,
-                setAsset,
-                Invested,
-                setInvested,
-                stockdata,
-                quat,
-                amount,
-                setGquant,
-                Gquant,
-              ]}
-            />
+            <SellButton VAll={stockdata} />
           </div>
         </Col>
       </Row>
       <Row>
         <Col>
           <br></br>
-          <AssetCard Value={Asset} />
+          <AssetCard />
         </Col>
         <Col>
           <br></br>
-          <InvestedCard Value={[Invested, Gquant * stockdata]} />
+          <InvestedCard Value={parseFloat(Cookies.get("Gquant")) * stockdata} />
         </Col>
         <Col>
           <br></br>
-          <StockList Value={Gquant} />
+          <StockList />
         </Col>
       </Row>
     </Container>
