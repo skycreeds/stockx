@@ -35,7 +35,7 @@
         "/home/skycreed/Documents/DEV/PROJECTS/stockx/src/assets/icons8-down-arrow-64.png",
         "/home/skycreed/Documents/DEV/PROJECTS/stockx/src/assets/icons8-up-30.png"
       ],
-      "targets": "all",
+      "targets": "appimage",
       "identifier": "com.tauri.stockx",
       "icon": [
         "icons/32x32.png",
