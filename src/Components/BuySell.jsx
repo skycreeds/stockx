@@ -54,7 +54,7 @@ function InvestedCard({ Value }) {
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
         {Cookies.get("invested")}{" "}
         <PriceChange
-          val={Value < 0 ? 0 : parseFloat(Value - parseFloat(Cookies.get("invested"))).toFixed(2)}
+          val={(parseFloat(Cookies.get('Asset'))+Value)-1000000}
         />
       </Card.Body>
     </Card>
