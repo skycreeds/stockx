@@ -9,11 +9,11 @@ import Cookies from "js-cookie";
 
 function AssetCard({ Value }) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height:"5rem"}}>
       <Card.Body>
         <Card.Title>ASSETS</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        <Card.Text>{Cookies.get("Asset")}</Card.Text>
+        <Card.Text>{parseFloat(Cookies.get("Asset")).toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
   );
@@ -23,7 +23,7 @@ function PriceChange({ val }) {
     return (
       <>
         <span style={{ color: "red", position: "absolute", right: "50px" }}>
-          {val}
+          {parseFloat(val).toFixed(2)}
         </span>
         <img
           style={{ position: "absolute", right: "100px", top: "50px", height:"40px"}}
@@ -46,30 +46,42 @@ function PriceChange({ val }) {
   }
 }
 
-function InvestedCard({ Value }) {
+function InvestedCard() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height:"5rem"}}>
       <Card.Body>
         <Card.Title>INVESTED</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        {Cookies.get("invested")}{" "}
-        <PriceChange
-          val={(parseFloat(Cookies.get('Asset'))+Value)-1000000}
-        />
+        {parseFloat(Cookies.get("invested")).toFixed(2)}
+        
       </Card.Body>
     </Card>
   );
 }
 function StockList() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height:"5rem"}}>
       <Card.Body>
         <Card.Title>Stock List</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-        <Card.Text>{Cookies.get("Gquant")}</Card.Text>
+        <Card.Text>{parseFloat(Cookies.get("Gquant")).toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
   );
+}
+
+function Portifolio_PL({Value}){
+  return(
+    <Card style={{ width: "18rem", height:"5rem" }}>
+      <Card.Body>
+        <Card.Title>Portifolio Profit & Loss</Card.Title>
+        <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+        <PriceChange
+          val={(parseFloat(Cookies.get('Asset'))+Value)-1000000}
+        />
+      </Card.Body>
+    </Card>
+  )
 }
 
 function BuySellWidget({ stockdata }) {
@@ -141,11 +153,15 @@ function BuySellWidget({ stockdata }) {
         </Col>
         <Col>
           <br></br>
-          <InvestedCard Value={parseFloat(Cookies.get("Gquant")) * stockdata} />
+          <InvestedCard />
         </Col>
         <Col>
           <br></br>
           <StockList />
+        </Col>
+        <Col>
+        <br></br>
+        <Portifolio_PL Value={parseFloat(Cookies.get("Gquant")) * stockdata}/>
         </Col>
       </Row>
     </Container>
