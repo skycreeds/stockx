@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactiveButton from "reactive-button";
 import Cookies from "js-cookie";
+import { sendDBdata } from "./Services";
 import "./Style.css";
 //VAll=[Asset,setAsset,Invested,setInvested,stockdata,quant,amount,setGquant,Gquant]
 //       0        1      2         3           4         5     6       7        8
@@ -29,6 +30,7 @@ function BuyButton({ VAll }) {
         parseFloat(Cookies.get("Gquant")) + parseFloat(Cookies.get("quant"))
       );
       Cookies.set("invested", parseFloat(Cookies.get("Gquant")) * VAll);
+      sendDBdata(Cookies.get('Login'),Cookies.get('Asset'))
     }
   };
 
@@ -75,6 +77,7 @@ export function SellButton({ VAll }) {
         parseFloat(Cookies.get("Gquant")) - parseFloat(Cookies.get("quant"))
       );
       Cookies.set("invested", parseFloat(Cookies.get("Gquant")) * VAll);
+      sendDBdata(Cookies.get('Login'),Cookies.get('Asset'))
     }
   };
 

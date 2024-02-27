@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 
 const Login = () => {
   const [inputUsername, setInputUsername] = useState("");
+  const [Mail,setMail]=useState("")
 
 
   const [show, setShow] = useState(false);
@@ -18,7 +19,8 @@ const Login = () => {
     setLoading(true);
     await delay(500);
     console.log(`Username :${inputUsername},`);
-    Cookies.set('Login',1)
+    Cookies.set('Login',inputUsername)
+    Cookies.set('email',Mail)
     setLoading(false);
   };
 
@@ -64,6 +66,17 @@ const Login = () => {
             value={inputUsername}
             placeholder="Username"
             onChange={(e) => setInputUsername(e.target.value)}
+            required
+            autoComplete="off"
+          />
+        </Form.Group>
+        <Form.Group className="mb-2" controlId="username">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="text"
+            value={Mail}
+            placeholder="Email"
+            onChange={(e) => setMail(e.target.value)}
             required
             autoComplete="off"
           />
