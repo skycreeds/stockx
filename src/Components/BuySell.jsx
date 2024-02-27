@@ -22,25 +22,25 @@ function PriceChange({ val }) {
   if (val < 0) {
     return (
       <>
-        <span style={{ color: "red", position: "absolute", right: "50px", fontWeight:'1000',fontSize:'1.8em'}}>
+        <span style={{ color: "red", position: "absolute",top:'40px',fontWeight:'1000',fontSize:'1.8em'}}>
           {parseFloat(val).toFixed(2)}
-        </span>
-      </>
-    );
-  } else {
+        </span>         
+      </>                                 
+    );                        
+  } else {              
     return (
       <>
-        <span style={{ color: "green", position: "absolute", right: "50px", fontWeight:'1000',fontSize:'1.8em'}}>
-          {val}
+        <span style={{ color: "green",top:'40px', position: "absolute", fontWeight:'1000',fontSize:'1.8em'}}>
+          {val}                                                                                                                                                                                                                                                                             
         </span>
       </>
     );
   }
-}
+}                                       
 
 function InvestedCard() {
-  return (
-    <Card style={{ width: "18rem", height:"5rem"}}>
+  return (                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    <Card style={{ width: "18rem", height:"5rem"}}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
       <Card.Body>
         <Card.Title>INVESTED</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
