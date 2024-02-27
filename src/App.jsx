@@ -4,8 +4,8 @@ import BuySellWidget from "./Components/BuySell";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getStockData } from "./Components/Services";
 import Cookies from "js-cookie";
-
-
+import "./Components/Style.css";
+import Login from "./Components/Login";
 function App() {
   //console.log(99999999999)
   if (Cookies.get("loaded") === undefined) {
@@ -26,16 +26,24 @@ function App() {
       });
   }, [stockData]);
 
-  return (
-    <>
-      <div>
-        <TradingViewWidget />
+  if(Cookies.get('Login')===undefined){
+    return(
+      <div className="Login-out">
+        <Login/>
       </div>
-      <div>
-        <BuySellWidget stockdata={stockData["close"]} />
-      </div>
-    </>
-  );
+    )
+  }else{
+    return (
+      <>
+        <div>
+          <TradingViewWidget />
+        </div>
+        <div>
+          <BuySellWidget stockdata={stockData["close"]} />
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;

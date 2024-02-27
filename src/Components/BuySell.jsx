@@ -77,7 +77,7 @@ function Portifolio_PL({Value}){
         <Card.Title>Portifolio Profit & Loss</Card.Title>
         <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
         <PriceChange
-          val={(parseFloat(Cookies.get('Asset'))+Value)-1000000}
+          val={parseFloat((parseFloat(Cookies.get('Asset'))+Value)-1000000).toFixed(2)}
         />
       </Card.Body>
     </Card>

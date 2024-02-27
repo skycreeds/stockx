@@ -14,7 +14,7 @@ function TradingViewWidget() {
           "width": "100%",
           "height": 500,
           "symbol": "BINANCE:AVAXUSDT",
-          "interval": "D",
+          "interval": "1",
           "timezone": "Etc/UTC",
           "theme": "light",
           "style": "1",
