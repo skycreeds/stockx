@@ -22,25 +22,17 @@ function PriceChange({ val }) {
   if (val < 0) {
     return (
       <>
-        <span style={{ color: "red", position: "absolute", right: "50px" }}>
+        <span style={{ color: "red", position: "absolute", right: "50px", fontWeight:'1000',fontSize:'1.8em'}}>
           {parseFloat(val).toFixed(2)}
         </span>
-        <img
-          style={{ position: "absolute", right: "100px", top: "50px", height:"40px"}}
-          src="./src/assets/icons8-down-arrow-64.png"
-        />
       </>
     );
   } else {
     return (
       <>
-        <span style={{ color: "green", position: "absolute", right: "50px" }}>
+        <span style={{ color: "green", position: "absolute", right: "50px", fontWeight:'1000',fontSize:'1.8em'}}>
           {val}
         </span>
-        <img
-          style={{  position: "absolute", right: "90px", top: "40px", height:"40px" }}
-          src="./src/assets/icons8-up-30.png"
-        />
       </>
     );
   }
