@@ -27,7 +27,7 @@ function PriceChange({ val }) {
         </span>
         <img
           style={{ position: "absolute", right: "100px", top: "50px", height:"40px"}}
-          src="src/assets/icons8-down-arrow-64.png"
+          src="./src/assets/icons8-down-arrow-64.png"
         />
       </>
     );
@@ -39,7 +39,7 @@ function PriceChange({ val }) {
         </span>
         <img
           style={{  position: "absolute", right: "90px", top: "40px", height:"40px" }}
-          src="src/assets/icons8-up-30.png"
+          src="./src/assets/icons8-up-30.png"
         />
       </>
     );
