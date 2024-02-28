@@ -8,8 +8,9 @@ import "./Components/Style.css";
 import Login from "./Components/Login";
 import './Components/Style.css'
 import { useTimer } from "use-timer";
+import convertSeconds from "convert-seconds";
 function App() {
-  const { time, start, pause, reset, status } = useTimer({endTime:1800,initialTime:0});
+  const { time, start, pause, reset, status } = useTimer({endTime:0,initialTime:1800,timerType:'DECREMENTAL'});
   //console.log(99999999999)
   if (Cookies.get("loaded") === undefined) {
     Cookies.set("loaded", 1);
@@ -40,17 +41,17 @@ function App() {
 
     if(status==='STOPPED'){
       return(
-        <>
-        <div className="thank-out">
+        
+        <div className="thank-out" style={{fontSize:"1.8em"}}>
           THANK YOU
         </div>
-        </>
+        
       )
     }else{
       return (
         <>
           <div>
-            {time}
+            {convertSeconds(time).minutes}{":"}{convertSeconds(time).seconds}
           </div>
           <div>
             <TradingViewWidget />
