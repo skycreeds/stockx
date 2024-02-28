@@ -6,7 +6,7 @@ import BackgroundImage from "../assets/images/background.png";
 import Logo from "../assets/images/stock.png";
 import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = ({startTime}) => {
   const [inputUsername, setInputUsername] = useState("");
   const [Mail,setMail]=useState("")
 
@@ -22,6 +22,7 @@ const Login = () => {
     Cookies.set('Login',inputUsername)
     Cookies.set('email',Mail)
     setLoading(false);
+    startTime()
   };
 
   const handlePassword = () => {};

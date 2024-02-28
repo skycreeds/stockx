@@ -31,3 +31,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.thank-out{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight:'1000';
+    font-size:'1.8em';
+}
