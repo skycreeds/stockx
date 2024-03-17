@@ -30,7 +30,7 @@ function BuyButton({ VAll }) {
         parseFloat(Cookies.get("Gquant")) + parseFloat(Cookies.get("quant"))
       );
       Cookies.set("invested", parseFloat(Cookies.get("Gquant")) * VAll);
-      sendDBdata(Cookies.get('Login'),Cookies.get('Asset'))
+      //sendDBdata(Cookies.get('Login'),Cookies.get('Asset')) #optional
     }
   };
 
@@ -77,7 +77,7 @@ export function SellButton({ VAll }) {
         parseFloat(Cookies.get("Gquant")) - parseFloat(Cookies.get("quant"))
       );
       Cookies.set("invested", parseFloat(Cookies.get("Gquant")) * VAll);
-      sendDBdata(Cookies.get('Login'),Cookies.get('Asset'))
+      //sendDBdata(Cookies.get('Login'),Cookies.get('Asset')) #optional
     }
   };
 
